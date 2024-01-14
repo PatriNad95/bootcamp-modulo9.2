@@ -1,4 +1,4 @@
-import { commonPasswords } from "./modelo";
+import { ErroresValidacion, commonPasswords } from "./modelo";
 import {
   tieneMayusculasYMinusculas,
   tieneNumeros,
@@ -21,39 +21,39 @@ export const validarClave = (
   if (!tieneMayusculasYMinusculas(clave)) {
     return {
       esValida: false,
-      error: "La clave debe de tener mayúsculas y minúsculas",
+      error: ErroresValidacion.NO_MAYUS_MINUS,
     };
   }
 
   if (!tieneNumeros(clave)) {
-    return { esValida: false, error: "La clave debe de tener números" };
+    return { esValida: false, error: ErroresValidacion.NO_NUMBERS };
   }
 
   if (!tieneCaracteresEspeciales(clave)) {
     return {
       esValida: false,
-      error: "La clave debe de tener caracteres especiales",
+      error: ErroresValidacion.NO_SPECIAL_CHAR,
     };
   }
 
   if (!tieneLongitudMinima(clave)) {
     return {
       esValida: false,
-      error: "La clave debe de tener una longitud mínima de 8 caracteres",
+      error: ErroresValidacion.MIN_LENGTH,
     };
   }
 
   if (tieneNombreUsuario(nombreUsuario, clave)) {
     return {
       esValida: false,
-      error: "La clave no debe tener el nombre del usuario",
+      error: ErroresValidacion.USER_NAME,
     };
   }
 
   if (tienePalabrasComunes(clave, commonPasswords)) {
     return {
       esValida: false,
-      error: "La clave no debe de contener palabras comunes",
+      error: ErroresValidacion.COMMON_PASS,
     };
   }
 

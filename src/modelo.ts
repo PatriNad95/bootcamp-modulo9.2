@@ -52,3 +52,12 @@ export const commonPasswords: string[] = [
   "password12",
   "1234567890",
 ];
+
+export enum ErroresValidacion {
+  NO_MAYUS_MINUS = "La clave debe de tener mayúsculas y minúsculas",
+  NO_NUMBERS = "La clave debe de tener números",
+  NO_SPECIAL_CHAR = "La clave debe de tener caracteres especiales",
+  MIN_LENGTH = "La clave debe de tener una longitud mínima de 8 caracteres",
+  USER_NAME = "La clave no debe tener el nombre del usuario",
+  COMMON_PASS = "La clave no debe de contener palabras comunes",
+}
